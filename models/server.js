@@ -6,7 +6,7 @@ class Server{
     constructor(){
         this.app = express();
         this.port = process.env.PORT;
-
+        this.alumnosPath = '/api/alumnos'
         this.conectarDB();
         this.middlewares();
         this.routes();
@@ -23,7 +23,7 @@ class Server{
     }
 
     routes(){
-
+        this.app.use(this.alumnosPath, require('../routes/alumnos.routes'));
     }
 
     listen(){

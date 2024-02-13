@@ -35,8 +35,8 @@ const AlumnoSchema = Schema ({
     },
     cursos: [
         {
-            type: Schema.Types.ObjectId,
-            ref:'Curso'
+           type: String,
+           required: [true, 'El curso es obligatorio']
         }
     ]
 });
