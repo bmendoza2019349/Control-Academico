@@ -9,7 +9,6 @@ const existenteEmail = async (correo = '') => {
     }
 }
 
-
 const existeUsuarioById = async ( id = '') => {
     const existeUsuario = await Alumno.findOne({id});
     if(!existeUsuario){
@@ -33,9 +32,6 @@ const existeCursoById = async ( id = '') => {
 
 
 module.exports = {
-    existenteEmail,
-    existeUsuarioById,
-    existeProfesorById,
-    existeCursoById
+    existenteEmail
 }
 
