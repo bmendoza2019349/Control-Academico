@@ -1,23 +1,31 @@
 const { response, json } = require('express');
 const bcrypt = require('bcrypt');
 const Alumno = require('../models/alumnos');
-const { existenteAlumnoEmail } = require('../helpers/db-validators');
-//const Curso = require('./models/curso');
+const { existenteAlumnoEmail, validarNumCursos, validarCursosRepetidos, validarExistenciaCursos } = require('../helpers/db-validators');
+const Curso = require('../models/curso');
 
 const alumnosPost = async (req, res) => {
     try {
         const { nombre, correo, password, cursos } = req.body;
-        await existenteAlumnoEmail(correo);
-        const hashedPassword = await bcrypt.hash(password, 10);
-        const alumno = new Alumno({ nombre, correo, password: hashedPassword, cursos/*: cursosEncontrados.map(curso => curso._id)*/ });
 
-        //const cursosEncontrados = await Curso.find({ nombre: { $in: cursos } });
-        // if (cursos.length !== cursosEncontrados.length) {
-        //     const cursosNoEncontrados = cursos.filter(curso => !cursosEncontrados.some(c => c.nombre === curso));
-        //     return res.status(404).json({ mensaje: `No se encontraron los cursos: ${cursosNoEncontrados.join(', ')}` });
-        // }
+        // Validar si el correo del alumno ya está registrado
+        await existenteAlumnoEmail(correo);
+
+        // Validar que no se estén agregando cursos repetidos
+        validarCursosRepetidos(cursos);
+
+        // Validar que no se exceda el número máximo de cursos permitidos
+        validarNumCursos(cursos);
+
+        // Validar que todos los cursos existan en la base de datos
+        await validarExistenciaCursos(cursos);
+
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        const alumno = new Alumno({ nombre, correo, password: hashedPassword, cursos });
 
         await alumno.save();
+        
         res.status(200).json({
             msg: 'Alumno Agregado Exitosamente',
             alumno

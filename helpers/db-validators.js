@@ -9,15 +9,17 @@ const existenteProfesorEmail = async (correo = '') => {
     }
 }
 
-const existeCursosNombre = async (nombre='')=>{
-    const existeNombre = await Curso.findOne({nombre});
-    if(existeNombre){
-        throw new Error(`El Curso ${ nombre } ya fue registrado`)
+const existeCursosNombre = async (nombre = '') => {
+    const nombreNormalizado = nombre.toLowerCase().replace(/\b\w/g, (l) => l.toUpperCase());
+    const existeNombre = await Curso.findOne({ nombre: nombreNormalizado });
+    
+    if (existeNombre) {
+        throw new Error(`El curso ${nombre} ya fue registrado`);
     }
 }
 
 const existenteAlumnoEmail = async (correo = '') => {
-    const existeEmail = await Profesor.findOne({correo});
+    const existeEmail = await Alumno.findOne({correo});
     if(existeEmail){
         throw new Error(`El email ${ correo } ya fue registrado`)
     }
@@ -43,7 +45,37 @@ const existeCursoById = async ( id = '') => {
     }
 }
 
+const validarCursosRepetidos = (cursos) => {
+    const set = new Set(cursos);
+    if (set.size !== cursos.length) {
+        const cursosRepetidos = [...set].filter(curso => cursos.indexOf(curso) !== cursos.lastIndexOf(curso));
+        throw new Error(`No se puede agregar el curso varias veces ${cursosRepetidos}`);
+    }
+}
 
+const validarNumCursos = (cursos) => {
+    if(cursos.length > 3){
+        throw new Error('Excede el numero máximo de cursos (3 Permitidos)');
+    }else if(cursos.length < 1){
+        throw new Error('Debes Colocar minimo 1 curso')
+    }
+}
+
+const validarExistenciaCursos = async (cursos) => {
+    const cursosEncontrados = await Curso.find({nombre: {$in: cursos}});
+    if(cursos.length !== cursosEncontrados.length){
+        const cursosNoEncontrados = cursos.filter(curso => !cursosEncontrados.some(c => c.nombre === curso));
+        throw new Error('No se encontraron los cursos');
+    }
+}
+
+const validarExistenciaProfesor = async (correo) => {
+    const existeProfesor = await Profesor.findOne({ correo });
+
+    if (!existeProfesor) {
+        throw new Error(`No se encontró el profesor con el correo ${correo}`);
+    }
+}
 
 module.exports = {
     existeCursoById,
@@ -51,6 +83,10 @@ module.exports = {
     existenteAlumnoEmail,
     existenteProfesorEmail,
     existeAlumnoById,
-    existeCursosNombre
+    existeCursosNombre,
+    validarCursosRepetidos,
+    validarNumCursos,
+    validarExistenciaCursos,
+    validarExistenciaProfesor
 }
 

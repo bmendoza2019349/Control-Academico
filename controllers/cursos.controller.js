@@ -1,27 +1,16 @@
 const { response, json } = require('express');
 const Curso = require('../models/curso');
-//const Profesor = require('../models/profesor');
 
-const { existeCursosNombre } = require('../helpers/db-validators');
+const { existeCursosNombre, validarExistenciaProfesor } = require('../helpers/db-validators');
 
 const cursosPost = async (req, res) => {
     try {
         const { nombre, detalle, acceso, profesor } = req.body;
-        await existeCursosNombre(nombre);
+        const nombreNormalizado = nombre.toLowerCase().replace(/\b\w/g, (l) => l.toUpperCase());
+        await existeCursosNombre(nombreNormalizado);
+        await validarExistenciaProfesor(profesor);
         const curso = new Curso({ nombre, detalle, acceso, profesor });
 
-        //     const profesor = await Profesor.findOne({ correo: profesorCorreo });
-        //     if (!profesor) {
-        //         return res.status(404).json({ mensaje: 'Profesor no encontrado' });
-        //     }
-        //     const curso = new Curso({ nombre, detalle, acceso, profesor });
-        //     await curso.save();
-        //     res.status(200).json({
-        //         curso
-        //     });
-        // } catch (error) {
-        //     res.status(500).json({ error: error.message });
-        // }
         await curso.save();
         res.status(200).json({
             msg: "Curso Agregado Con éxito",
