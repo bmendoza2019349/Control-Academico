@@ -2,26 +2,36 @@ const { response, json } = require('express');
 const Curso = require('../models/curso');
 //const Profesor = require('../models/profesor');
 
+const { existeCursosNombre } = require('../helpers/db-validators');
+
 const cursosPost = async (req, res) => {
-    const { nombre, detalle, acceso, profesor } = req.body;
-    const curso = new Curso({ nombre, detalle, acceso, profesor });
-    // try {
-    //     const profesor = await Profesor.findOne({ correo: profesorCorreo });
-    //     if (!profesor) {
-    //         return res.status(404).json({ mensaje: 'Profesor no encontrado' });
-    //     }
-    //     const curso = new Curso({ nombre, detalle, acceso, profesor });
-    //     await curso.save();
-    //     res.status(200).json({
-    //         curso
-    //     });
-    // } catch (error) {
-    //     res.status(500).json({ error: error.message });
-    // }
-    await curso.save();
-    res.status(200).json({
-        curso
-    });
+    try {
+        const { nombre, detalle, acceso, profesor } = req.body;
+        await existeCursosNombre(nombre);
+        const curso = new Curso({ nombre, detalle, acceso, profesor });
+
+        //     const profesor = await Profesor.findOne({ correo: profesorCorreo });
+        //     if (!profesor) {
+        //         return res.status(404).json({ mensaje: 'Profesor no encontrado' });
+        //     }
+        //     const curso = new Curso({ nombre, detalle, acceso, profesor });
+        //     await curso.save();
+        //     res.status(200).json({
+        //         curso
+        //     });
+        // } catch (error) {
+        //     res.status(500).json({ error: error.message });
+        // }
+        await curso.save();
+        res.status(200).json({
+            msg: "Curso Agregado Con éxito",
+            curso
+        });
+    } catch (error) {
+        res.status(409).json({
+            error: error.message,
+        });
+    }
 }
 
 const cursosGet = async (req, res = response) => {
@@ -64,14 +74,20 @@ const cursosPut = async (req, res) => {
 }
 
 const cursosDelete = async (req, res) => {
-    const { id } = req.params;
-    await Curso.findByIdAndUpdate(id, { estado: false });
+    try {
+        const { id } = req.params;
+        await Curso.findByIdAndUpdate(id, { estado: false });
 
-    const curso = await Curso.findOne({ _id: id });
+        const curso = await Curso.findOne({ _id: id });
 
-    res.status(200).json({
-        msg: 'Curso eliminado exitosamente',
-    });
+        res.status(200).json({
+            msg: 'Curso eliminado exitosamente',
+        });
+    } catch (error) {
+        res.status(500).json({
+            msg: "Curso no se elimino"
+        });
+    }
 }
 
 module.exports = {
