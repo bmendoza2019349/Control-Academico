@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
-
+const { validarJWT } = require('../middlewares/validar-jwt');
 const { validarCampos } = require('../middlewares/validar-campos');
 const { existenteAlumnoEmail, existeAlumnoById } = require('../helpers/db-validators');
 
@@ -23,25 +23,26 @@ router.post(
 router.get(
     "/:id",
     [
-    check("id", "El id no es un formato válido de MongoDB").isMongoId(),
-    check("id").custom(existeAlumnoById),
-    validarCampos
+        check("id", "El id no es un formato válido de MongoDB").isMongoId(),
+        check("id").custom(existeAlumnoById),
+        validarCampos
     ], getAlumnoByid);
 
 router.put(
     "/:id",
     [
-    check("id", "El id no es un formato válido de MongoDB").isMongoId(),
-    check("id").custom(existeAlumnoById),
-    validarCampos
+        check("id", "El id no es un formato válido de MongoDB").isMongoId(),
+        check("id").custom(existeAlumnoById),
+        validarCampos
     ], alumnosPut);
 
 router.delete(
     "/:id",
     [
-    check("id", "El id no es un formato válido de MongoDB").isMongoId(),
-    check("id").custom(existeAlumnoById),
-    validarCampos
+        validarJWT,
+        check("id", "El id no es un formato válido de MongoDB").isMongoId(),
+        check("id").custom(existeAlumnoById),
+        validarCampos
     ], alumnosDelete);
 
 module.exports = router;

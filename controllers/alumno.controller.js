@@ -68,6 +68,20 @@ const alumnosPut = async (req, res) => {
     });
 }
 
+const asignacionCursos = async (req, res) => {
+    const { id } = req.params;
+    const { _id, password, google, correo, office, ...resto } = req.body;
+
+    await Alumno.findByIdAndUpdate(id, resto);
+
+    const alumno = await Alumno.findOne({ _id: id });
+
+    res.status(200).json({
+        msg: 'Alumno actualizado exitosamente',
+        alumno
+    });
+}
+
 const alumnosDelete = async (req, res) => {
     try {
         const { id } = req.params;

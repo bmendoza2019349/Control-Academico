@@ -73,7 +73,7 @@ const validarExistenciaProfesor = async (correo) => {
     const existeProfesor = await Profesor.findOne({ correo });
 
     if (!existeProfesor) {
-        throw new Error(`No se encontró el profesor con el correo ${correo}`);
+        throw new Error(`No se encontró o no es profesor con el correo ${correo}`);
     }
 }
 

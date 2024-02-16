@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
-
+const { validarJWT } = require('../middlewares/validar-jwt');
 const { validarCampos } = require('../middlewares/validar-campos');
 const { existenteProfesorEmail, existeProfesorById} = require('../helpers/db-validators');
 
@@ -32,6 +32,7 @@ router.put(
 router.delete(
     "/:id",
     [
+        validarJWT,
         check("id","El id no es un formato válido de MongoDB").isMongoId(),
         check("id").custom(existeProfesorById),
         validarCampos
