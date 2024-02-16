@@ -69,9 +69,11 @@ const profesoresDelete = async (req, res) => {
     try {
         const { id } = req.params;
         const profesor = await Profesor.findByIdAndUpdate(id, { estado: false });
-
+        const profesorAutenticado = req.profesor;
         res.status(200).json({
-            msg: "Profesor eliminado Exitosamente"
+            msg: "Profesor a eliminar",
+            profesor,
+            profesorAutenticado
         });
     } catch (error) {
         res.status(500).json({

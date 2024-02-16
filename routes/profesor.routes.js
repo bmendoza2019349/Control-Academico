@@ -18,6 +18,8 @@ router.get(
         validarCampos
     ], getProfesorByid);
 
+
+    
 router.put(
     "/:id",
     [

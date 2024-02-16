@@ -1,6 +1,6 @@
 const { response, json } = require('express');
 const Curso = require('../models/curso');
-
+const Profesor = require('../models/profesor');
 const { existeCursosNombre, validarExistenciaProfesor } = require('../helpers/db-validators');
 
 const cursosPost = async (req, res) => {
@@ -79,10 +79,28 @@ const cursosDelete = async (req, res) => {
     }
 }
 
+const getCursosByProfesorEmail = async (req, res) => {
+    try {
+        const { profesor } = req.params;
+        const cursos = await Curso.find({ profesor });
+
+        res.status(200).json({
+            cursos
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            msg: "Error al obtener cursos por correo del profesor"
+        });
+    }
+}
+
+
 module.exports = {
     cursosDelete,
     cursosGet,
     cursosPost,
     cursosPut,
-    getCursoByid
+    getCursoByid,
+    getCursosByProfesorEmail
 }

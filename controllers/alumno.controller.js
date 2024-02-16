@@ -6,23 +6,13 @@ const Curso = require('../models/curso');
 
 const alumnosPost = async (req, res) => {
     try {
-        const { nombre, correo, password, cursos } = req.body;
-
+        const { nombre, correo, password } = req.body;
         // Validar si el correo del alumno ya está registrado
         await existenteAlumnoEmail(correo);
 
-        // Validar que no se estén agregando cursos repetidos
-        validarCursosRepetidos(cursos);
-
-        // Validar que no se exceda el número máximo de cursos permitidos
-        validarNumCursos(cursos);
-
-        // Validar que todos los cursos existan en la base de datos
-        await validarExistenciaCursos(cursos);
-
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        const alumno = new Alumno({ nombre, correo, password: hashedPassword, cursos });
+        const alumno = new Alumno({ nombre, correo, password: hashedPassword });
 
         await alumno.save();
         
@@ -82,11 +72,13 @@ const alumnosDelete = async (req, res) => {
     try {
         const { id } = req.params;
         await Alumno.findByIdAndUpdate(id, { estado: false });
-
         const alumno = await Alumno.findOne({ _id: id });
+        const alumnoAutenticado = req.alumno;
 
         res.status(200).json({
-            msg: 'Alumno eliminado Exitosamente'
+            msg: 'Alumno a eliminar',
+            alumno,
+            alumnoAutenticado
         });
     } catch (error) {
         res.status(500).json({
