@@ -2,12 +2,6 @@ const Alumno = require('../models/alumnos');
 const Profesor = require('../models/profesor');
 const Curso = require('../models/curso');
 
-const existenteProfesorEmail = async (correo = '') => {
-    const existeEmail = await Profesor.findOne({correo});
-    if(existeEmail){
-        throw new Error(`El email ${ correo } ya fue registrado`)
-    }
-}
 
 const existeCursosNombre = async (nombre = '') => {
     const nombreNormalizado = nombre.toLowerCase().replace(/\b\w/g, (l) => l.toUpperCase());
@@ -42,6 +36,13 @@ const existeCursoById = async ( id = '') => {
     const existeUsuario = await Curso.findOne({id});
     if(!existeUsuario){
         throw new Error(`El curso con el ${ id } no existe`);
+    }
+}
+
+const existeCursoByCorreo = async ( correo = '') => {
+    const existeUsuario = await Curso.findOne({correo});
+    if(!existeUsuario){
+        throw new Error(`El curso con el ${ correo } no existe`);
     }
 }
 
@@ -81,7 +82,7 @@ module.exports = {
     existeCursoById,
     existeProfesorById,
     existenteAlumnoEmail,
-    existenteProfesorEmail,
+    existeCursoByCorreo,
     existeAlumnoById,
     existeCursosNombre,
     validarCursosRepetidos,

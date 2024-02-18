@@ -4,7 +4,7 @@ const { validarJWT } = require('../middlewares/validar-jwt');
 const { validarCampos } = require('../middlewares/validar-campos');
 const { existenteAlumnoEmail, existeAlumnoById } = require('../helpers/db-validators');
 
-const { alumnosPost, getAlumnoByid, alumnosPut, alumnosDelete, alumnosGet } = require('../controllers/alumno.controller');
+const { alumnosPost, getAlumnoByid, alumnosPut, alumnosDelete, alumnosGet, agregarCursoAlumno, getCursosAlumnoById } = require('../controllers/alumno.controller');
 
 const router = Router();
 
@@ -39,10 +39,29 @@ router.put(
 router.delete(
     "/:id",
     [
-        validarJWT,
         check("id", "El id no es un formato válido de MongoDB").isMongoId(),
         check("id").custom(existeAlumnoById),
         validarCampos
     ], alumnosDelete);
+
+
+    router.post(
+        "/:id",
+        [
+            check("nombreMateria", "El nombre de la materia es obligatorio").not().isEmpty(),
+            validarCampos,
+        ],
+        agregarCursoAlumno
+    );
+
+    router.get(
+        "/:id/cursos",
+        [
+            check("id", "El id no es un formato válido de MongoDB").isMongoId(),
+            check("id").custom(existeAlumnoById),
+            validarCampos,
+        ],
+        getCursosAlumnoById
+    );
 
 module.exports = router;

@@ -41,11 +41,10 @@ const AlumnoSchema = Schema ({
     ]
 });
 
-AlumnoSchema.methods.toJSON = function(){
-    const { __v, password,_id, ...alumno} = this.toObject();
-    alumno.uid = _id;
-    return alumno;
-    
-}
+AlumnoSchema.methods.agregarCurso = function(nombre) {
+    if (this.cursos.length < 3 && !this.cursos.includes(nombre)) {
+        this.cursos.push(nombre);
+    }
+};
 
-module.exports = model('Alumno', AlumnoSchema)
+module.exports = model('Alumno', AlumnoSchema);
