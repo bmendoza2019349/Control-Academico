@@ -1,0 +1,127 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Alumnos",
+    "dateExported": "2024-02-18T07:26:04.696Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "0fd5e687-e7ad-4821-b62d-d861ca7f5c12",
+            "colId": "a89fa7da-885f-45af-b2d2-c95c6e466085",
+            "containerId": "",
+            "name": "alumnosGet",
+            "url": "http://localhost:3000/api/alumnos",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-02-13T15:36:16.305Z",
+            "modified": "2024-02-14T00:38:49.086Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "57ca225c-9bb0-4fbf-8bd4-6ddc515578f2",
+            "colId": "a89fa7da-885f-45af-b2d2-c95c6e466085",
+            "containerId": "",
+            "name": "alumnosPost",
+            "url": "http://localhost:3000/api/alumnos",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-02-13T22:33:30.916Z",
+            "modified": "2024-02-18T07:08:40.739Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\":\"alumno14\" ,\n  \"correo\":\"alumno14@kinal.edu.gt\", \n  \"password\":\"1234\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "0ad24ff7-e0fb-42fe-ace0-00dff57b0887",
+            "colId": "a89fa7da-885f-45af-b2d2-c95c6e466085",
+            "containerId": "",
+            "name": "alumnosPut",
+            "url": "http://localhost:3000/api/alumnos/65cc0b6679d1453d5397cb9d",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2024-02-13T23:06:46.423Z",
+            "modified": "2024-02-14T00:39:46.537Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"cursos\":[\"Taller\",\"tecnologia\",\"Practica\"]\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "c684ca08-26bd-4e76-a5d6-97ca6c8e2671",
+            "colId": "a89fa7da-885f-45af-b2d2-c95c6e466085",
+            "containerId": "",
+            "name": "getAlumnoById",
+            "url": "http://localhost:3000/api/alumnos/65cc16a7fbed12a8cac717f2",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-02-13T23:09:23.436Z",
+            "modified": "2024-02-18T05:49:46.524Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "f9f95b61-7aeb-4c7e-a904-1e8a8252f6de",
+            "colId": "a89fa7da-885f-45af-b2d2-c95c6e466085",
+            "containerId": "",
+            "name": "alumnosDelete",
+            "url": "http://localhost:3000/api/alumnos/65cbf5c0b00a2712c65c7ab0",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2024-02-13T23:09:59.274Z",
+            "modified": "2024-02-16T17:09:06.569Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWNjNDdiYzYyNWFmN2M0Y2M0YzE1NjgiLCJpYXQiOjE3MDgxMDMyNjQsImV4cCI6MTcwODEwNjg2NH0.47YZLNf1OqYk3v63xfeUjuURS5nGMh--R6rqIzeh0tk"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "6f5c7f45-0fb2-4ed1-9bb5-10bbb306c2c4",
+            "colId": "a89fa7da-885f-45af-b2d2-c95c6e466085",
+            "containerId": "",
+            "name": "agregarCursoAlumno",
+            "url": "http://localhost:3000/api/alumnos/65d1acf80fd4e4912789aab0",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2024-02-16T17:30:53.919Z",
+            "modified": "2024-02-18T07:09:27.523Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"nombreMateria\": \"Ciencias sociales\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "249181ae-5179-4171-b6ec-bb1f72628a3b",
+            "colId": "a89fa7da-885f-45af-b2d2-c95c6e466085",
+            "containerId": "",
+            "name": "getCursosAlumnoById",
+            "url": "http://localhost:3000/api/alumnos/65d1acf80fd4e4912789aab0/cursos",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2024-02-18T06:39:08.417Z",
+            "modified": "2024-02-18T07:13:37.568Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}

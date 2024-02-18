@@ -1,0 +1,94 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Profesores",
+    "dateExported": "2024-02-18T07:25:40.815Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "f1fdc7e0-9bdb-45f3-b063-f8eb64a79dd2",
+            "colId": "d7cd677f-73af-4fbd-96dc-b5c69d7ada34",
+            "containerId": "",
+            "name": "profesoresPost",
+            "url": "http://localhost:3000/api/profesores",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-12T21:52:56.392Z",
+            "modified": "2024-02-14T00:19:16.808Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n   \"nombre\": \"teacher9\", \n   \"correo\": \"teacher9@kinal.edu.gt\", \n   \"password\": \"1234\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "f1ed89d4-a452-40a1-91db-b0f719d7cbc3",
+            "colId": "d7cd677f-73af-4fbd-96dc-b5c69d7ada34",
+            "containerId": "",
+            "name": "profesoresGet",
+            "url": "http://localhost:3000/api/profesores",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-02-12T22:18:05.304Z",
+            "modified": "2024-02-12T22:18:09.072Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "d1bdd96f-6f31-437a-a124-3137676d51ea",
+            "colId": "d7cd677f-73af-4fbd-96dc-b5c69d7ada34",
+            "containerId": "",
+            "name": "getProfesorByid",
+            "url": "http://localhost:3000/api/profesores/65ca96b79efa8cd1872b447c",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-02-12T22:18:53.981Z",
+            "modified": "2024-02-14T00:19:47.879Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "397722be-ae59-452e-aaf0-057f56d401da",
+            "colId": "d7cd677f-73af-4fbd-96dc-b5c69d7ada34",
+            "containerId": "",
+            "name": "profesoresDelete",
+            "url": "http://localhost:3000/api/profesores/65caab41d1193bbcf25c5817",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2024-02-12T22:20:07.586Z",
+            "modified": "2024-02-16T16:54:21.369Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWNjMDcwNGIzNjYwMDlhZTJiNmFkZmIiLCJpYXQiOjE3MDgxMDIzNjksImV4cCI6MTcwODEwNTk2OX0.NHF62-Ti_WgAIg2YbWq8d9Mtv-EK5mj2Sp_iNhwtD1M"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "66531f0c-7534-4bf7-8474-8b99349f6e54",
+            "colId": "d7cd677f-73af-4fbd-96dc-b5c69d7ada34",
+            "containerId": "",
+            "name": "profesoresPut",
+            "url": "http://localhost:3000/api/profesores/65ca96b79efa8cd1872b447c",
+            "method": "PUT",
+            "sortNum": 60000,
+            "created": "2024-02-12T22:26:32.876Z",
+            "modified": "2024-02-14T00:20:16.260Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n   \"nombre\": \"teacherprueba\"\n   \n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}

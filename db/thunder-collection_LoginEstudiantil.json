@@ -1,0 +1,47 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "LoginEstudiantil",
+    "dateExported": "2024-02-18T07:24:53.830Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "f750f96f-69aa-4bce-9218-a465e5b8e635",
+            "colId": "ce449db8-7a3f-434d-ad77-67029bb56cd4",
+            "containerId": "",
+            "name": "getUsuariosLogin",
+            "url": "http://localhost:3000/api/auth/login",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-14T16:04:22.396Z",
+            "modified": "2024-02-16T17:07:44.669Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"correo\": \"alumno12@kinal.edu.gt\",\n  \"password\": \"alm5\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "eca9a992-3e68-4c49-ab7e-5033645d3166",
+            "colId": "ce449db8-7a3f-434d-ad77-67029bb56cd4",
+            "containerId": "",
+            "name": "login",
+            "url": "http://localhost:3000/api/login",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-02-16T15:03:53.822Z",
+            "modified": "2024-02-16T15:04:25.711Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"correo\": \"alumno12@kinal.edu.gt\",\n  \"password\": \"alm5\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}

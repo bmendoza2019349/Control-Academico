@@ -1,0 +1,113 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Cursos",
+    "dateExported": "2024-02-18T07:25:55.609Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "61ab9434-272e-4109-bccb-65ce94c98933",
+            "colId": "75875fc5-ab00-4f97-83c8-ceb091886998",
+            "containerId": "",
+            "name": "getCursoByid",
+            "url": "http://localhost:3000/api/cursos/65cc090279d1453d5397cb81",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-02-13T03:46:50.949Z",
+            "modified": "2024-02-18T07:13:07.992Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "b562ec5b-638d-4641-9945-80b42e994d47",
+            "colId": "75875fc5-ab00-4f97-83c8-ceb091886998",
+            "containerId": "",
+            "name": "cursosPut",
+            "url": "http://localhost:3000/api/cursos/65cc090279d1453d5397cb81",
+            "method": "PUT",
+            "sortNum": 20000,
+            "created": "2024-02-13T03:47:01.151Z",
+            "modified": "2024-02-18T07:16:14.467Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"detalle\": \"educacion social\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "529a91ea-c6b3-4184-8251-3e1a9874ded2",
+            "colId": "75875fc5-ab00-4f97-83c8-ceb091886998",
+            "containerId": "",
+            "name": "cursosPost",
+            "url": "http://localhost:3000/api/cursos",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-02-13T03:47:10.492Z",
+            "modified": "2024-02-17T06:58:23.993Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\": \"industriales\",\n  \"detalle\": \"Se realizan practicas\",\n  \"acceso\": \"ps\",\n  \"profesor\": \"teacher2@kinal.edu.gt\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "a4f59c1c-0d8b-4746-9767-e082e808cd0f",
+            "colId": "75875fc5-ab00-4f97-83c8-ceb091886998",
+            "containerId": "",
+            "name": "cursosGet",
+            "url": "http://localhost:3000/api/cursos",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-02-13T03:47:22.846Z",
+            "modified": "2024-02-18T07:15:55.215Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "d6c0869d-d77a-4622-8060-3f6a4d3fb737",
+            "colId": "75875fc5-ab00-4f97-83c8-ceb091886998",
+            "containerId": "",
+            "name": "cursosDelete",
+            "url": "http://localhost:3000/api/cursos/65cc090279d1453d5397cb81",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2024-02-13T03:47:37.531Z",
+            "modified": "2024-02-18T07:14:11.351Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWNjNDdiYzYyNWFmN2M0Y2M0YzE1NjgiLCJpYXQiOjE3MDgxMDE2MjYsImV4cCI6MTcwODEwNTIyNn0.8CQDaFakSDKS05PCB0ppbbPQp6MHt8m7QLH78fUvZ_g"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "4f69bc93-ad7c-41ce-a737-5d2e2d66f7aa",
+            "colId": "75875fc5-ab00-4f97-83c8-ceb091886998",
+            "containerId": "",
+            "name": "cursosProfesorGet",
+            "url": "http://localhost:3000/api/cursos/profesor",
+            "method": "POST",
+            "sortNum": 70000,
+            "created": "2024-02-15T05:06:47.888Z",
+            "modified": "2024-02-17T06:28:39.603Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"correo\": \"test2@kinal.edu.gt\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
